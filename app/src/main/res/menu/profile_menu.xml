@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/profile_data"
+        android:title="Profile Data"
+        android:icon="@drawable/user_24px"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/bookmark"
+        android:title="Bookmarks"
+        android:icon="@drawable/bookmark_32px"
+        android:titleCondensed="how"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/favourite"
+        android:title="Favourites"
+        android:icon="@drawable/heart_outline_48px"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/shown"
+        android:title="Shown"
+        android:icon="@drawable/eye_32px"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/blocked"
+        android:title="Blocked"
+        android:icon="@drawable/unavailable_50px"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/exit"
+        android:title="Exit"
+        android:icon="@drawable/exit_64px"
+        app:showAsAction="always"/>
+</menu>

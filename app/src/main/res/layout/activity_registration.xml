@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/colorBlack"
+            android:textSize="32sp"/>
+
+        <LinearLayout
+            android:id="@+id/input_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@drawable/login_form"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_centerInParent="true">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/username_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:hint="@string/username"
+                android:textColorHighlight="@color/colorWhite"
+                android:backgroundTint="@color/violetColor"
+                android:textColorHint="@color/colorHints"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textColorHint="@color/colorHints"
+                android:backgroundTint="@color/violetColor"
+                android:textColorHighlight="@color/colorWhite"
+                android:hint="@string/password"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/repeat_password_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textColorHint="@color/colorHints"
+                android:backgroundTint="@color/violetColor"
+                android:textColorHighlight="@color/colorWhite"
+                android:hint="@string/repeat_password"
+                android:textColor="@color/colorBlack" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/email_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textColorHint="@color/colorHints"
+                android:backgroundTint="@color/violetColor"
+                android:textColorHighlight="@color/colorWhite"
+                android:hint="@string/email"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/registration_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:backgroundTint="@color/violetColor"
+            android:text="Registration"
+            android:layout_below="@id/input_login_form"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@color/colorBlack"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textSize="32sp"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/right_oval_login_form"
+            android:layout_alignParentEnd="true"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="55dp"
+            android:background="@drawable/small_oval_login_screen"
+            android:layout_alignParentEnd="true"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:background="@drawable/login_form_attributes"
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="52dp"
+            android:layout_marginStart="55dp"
+            android:background="@drawable/small_oval_login_screen"
+            android:layout_alignParentBottom="true"/>
+
+        <ProgressBar
+            android:id="@+id/registration_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

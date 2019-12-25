@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RandomMovie</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="login">LOGIN</string>
+    <string name="jane_austen_was_a_great_woman_novelist_of_the_early_19th_century_jane_was_born_on_16_december_1775_in_steventon_rectory_she_was_the_second_daughter_of_the_reverend_george_austen_and_his_wife_cassandra_apart_from_her_older_sister_also_called_cassandra_jane_also_had_6_brothers">Jane Austen was a great woman novelist of the early 19th century. Jane was born on 16 December 1775 in Steventon Rectory. She was the second daughter of The Reverend George Austen and his wife Cassandra. Apart from her older sister, also called Cassandra Jane also had 6 brothers.</string>
+    <string name="jane_austen">Jane austen</string>
+    <string name="_5_0">5.0</string>
+    <string name="pride_and_prejudice">Pride and prejudice</string>
+    <string name="blocked">Blocked</string>
+    <string name="shown">Shown</string>
+    <string name="favourite">Favourite</string>
+    <string name="bookmark">Bookmark</string>
+</resources>
