@@ -27,4 +27,6 @@ interface TheMovieDBInterface {
 
     @GET("movie/popular")
     fun getGenreMovie(@Query("page") page: Int): Single<MovieResponse>
+
+
 }

@@ -1,12 +1,18 @@
 package com.example.randommovie.activities
 
 import android.os.Bundle
-import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.randommovie.R
+import com.example.randommovie.ui.activities.ActivityProfileData
+import com.example.randommovie.ui.activities.ActivityProfileFavourites
+import com.example.randommovie.ui.activities.ActivityProfileShownFilms
+import com.example.randommovie.ui.activities.ActivityProfilesBookmarks
+import com.example.randommovie.ui.utils.launchActivity
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_profile.*
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_profile_info.*
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -15,7 +21,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.activity_profile_info)
         init()
         initToolbar()
         initNavigation()
@@ -33,22 +39,37 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     private fun initNavigation(){
         mNavigation.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.profile->{
+                R.id.profile_data->{
+                    launchActivity<ActivityProfileData>()
                     true
                 }
                 R.id.bookmark->{
+                    launchActivity<ActivityProfilesBookmarks>()
                     true
                 }
                 R.id.favourite->{
+                    launchActivity<ActivityProfileFavourites>()
                     true
                 }
                 R.id.shown->{
+                    launchActivity<ActivityProfileShownFilms>()
                     true
                 }
                 R.id.exit->{
+                    createExitAlertDialog()
                     true
                 }
                 else->false
@@ -56,5 +77,17 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    fun createExitAlertDialog(){
+        val exitDialog = AlertDialog.Builder(this)
+        exitDialog.setTitle("Do you wanna exit?")
+            .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton("Yes") { _, _ ->
+                run {
+                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+                    firebaseAuth.signOut()
+                    launchActivity<MainActivity>()
+                }
+            }.show()
+    }
 
 }

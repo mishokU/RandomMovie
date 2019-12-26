@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.randommovie.R
 import com.example.randommovie.data.repository.firebase.Authentication
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.activity_login.view.*
+import kotlinx.android.synthetic.main.activity_log_in.view.*
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_registration.view.*
 
@@ -40,7 +40,8 @@ class FragmentRegistration : Fragment() {
         mRegistration = view.registration_sign_up
         mProgressBar = view.registration_progress_bar
 
-        auth = Authentication(context)
+        auth = Authentication(view)
+
         registration()
         return view
     }

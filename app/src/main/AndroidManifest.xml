@@ -14,24 +14,36 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
         <activity android:name=".activities.MainActivity">
+
+        </activity>
+        <activity android:name=".activities.MainTapeActivivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainTapeActivivty">
-
-        </activity>
 
         <activity android:name=".activities.ProfileActivity"
             android:parentActivityName=".activities.MainTapeActivivty">
 
-
-
         </activity>
 
         <activity android:name=".ui.activities.SingleMovie"/>
+
+        <activity android:name=".ui.activities.ActivityProfileData"
+            android:parentActivityName=".activities.ProfileActivity">
+        </activity>
+
+        <activity android:name=".ui.activities.ActivityProfilesBookmarks"
+            android:parentActivityName=".activities.ProfileActivity"/>
+
+        <activity android:name=".ui.activities.ActivityProfileShownFilms"
+            android:parentActivityName=".activities.ProfileActivity"/>
+
+        <activity android:name=".ui.activities.ActivityProfileFavourites"
+            android:parentActivityName=".activities.ProfileActivity"/>
+
     </application>
 
 </manifest>

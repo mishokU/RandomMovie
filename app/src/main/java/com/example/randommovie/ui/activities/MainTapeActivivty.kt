@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_main_tape.*
 import kotlinx.android.synthetic.main.bottom_sheet_main_tape.view.*
 import com.example.randommovie.data.localRepository.MoviePagedListRepository
 import com.example.randommovie.data.repository.NetworkState
+import com.example.randommovie.data.repository.firebase.Authentication
 import com.example.randommovie.data.viewmodel.GenresViewModel
 import com.example.randommovie.data.viewmodel.MainActivityViewModel
 import com.example.randommovie.data.viewmodel.MovieGenresViewModel
@@ -35,6 +36,7 @@ import com.example.randommovie.data.vo.GenreResponse
 import com.example.randommovie.data.vo.models.GenreModel
 import com.example.randommovie.ui.adapters.PopularMoviePagedListAdapter
 import com.example.randommovie.ui.utils.launchActivity
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_tape.progress_bar_popular
 import kotlinx.android.synthetic.main.activity_main_tape.rv_movie_list
@@ -61,6 +63,7 @@ class MainTapeActivivty : AppCompatActivity() {
     private lateinit var genresString : ArraySet<Int>
 
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var authUser : Authentication = Authentication(this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -198,7 +201,9 @@ class MainTapeActivivty : AppCompatActivity() {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
+        if(!authUser.inSystem()){
+           launchActivity<MainActivity>()
+        }
     }
 
     //r

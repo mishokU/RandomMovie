@@ -14,9 +14,9 @@ import kotlinx.android.synthetic.main.activity_start.*
 
 class MainActivity : AppCompatActivity() {
 
-    var tabLayout : TabLayout ?= null
-    var viewPager : ViewPager ?= null
-    var viewPagerAdapter : ViewPagerAdapter ?= null
+    private var tabLayout : TabLayout ?= null
+    private var viewPager : ViewPager ?= null
+    private var viewPagerAdapter : ViewPagerAdapter ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +36,6 @@ class MainActivity : AppCompatActivity() {
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPagerAdapter!!.addFragment(FragmentLogIn(),"Login")
         viewPagerAdapter!!.addFragment(FragmentRegistration(), "Registration")
-
-
         viewPager!!.adapter = viewPagerAdapter
 
         tabLayout?.setupWithViewPager(viewPager)

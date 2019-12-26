@@ -10,8 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.randommovie.R
 import com.example.randommovie.data.repository.firebase.Authentication
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
+import kotlinx.android.synthetic.main.activity_log_in.view.*
 
 class FragmentLogIn : Fragment() {
 
@@ -27,14 +26,14 @@ class FragmentLogIn : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view : View = inflater.inflate(R.layout.activity_login, container, false)
+        val view : View = inflater.inflate(R.layout.activity_log_in, container, false)
 
         mLoginButton = view.login_button_log_in
         mEmail = view.email_log_in
         mPassword = view.password_log_in
         mProgressBar = view.login_progress_bar
 
-        auth = Authentication(context)
+        auth = Authentication()
 
         login()
         return view
