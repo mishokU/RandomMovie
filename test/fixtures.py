@@ -5,8 +5,10 @@ import constants as cnst
 desired_caps = {
   "deviceName": "emulator-5554",
   "platformName": "Android",
-  "appPackage": "com.sredasolutions.hmi.debug",
-  "appActivity": "com.sredasolutions.hmi.ui.activities.StatusActivity",
+  # "appPackage": "com.sredasolutions.hmi.debug",
+  # "appActivity": "com.sredasolutions.hmi.ui.activities.StatusActivity",
+  "appPackage": cnst.APP_PACKAGE,
+  "appActivity": cnst.APP_ACTIVITY,
   "noReset": True
 }
 
