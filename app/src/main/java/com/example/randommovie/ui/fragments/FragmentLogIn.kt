@@ -1,5 +1,6 @@
 package com.example.randommovie.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +15,15 @@ import kotlinx.android.synthetic.main.activity_log_in.view.*
 
 class FragmentLogIn : Fragment() {
 
+    private var mLogInInt : OnLogInInterface ?= null
+
+    interface OnLogInInterface{
+        fun onLogIn(email : String, password : String)
+    }
+
     private lateinit var mLoginButton : MaterialButton
     private lateinit var mEmail : EditText
     private lateinit var mPassword : EditText
-    private lateinit var mProgressBar : ProgressBar
-
-    private lateinit var auth : Authentication
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,20 +35,21 @@ class FragmentLogIn : Fragment() {
         mLoginButton = view.login_button_log_in
         mEmail = view.email_log_in
         mPassword = view.password_log_in
-        mProgressBar = view.login_progress_bar
-
-        auth = Authentication()
 
         login()
         return view
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is OnLogInInterface){
+           mLogInInt = context
+        }
+    }
 
     private fun login(){
-        auth.setProgressBar(mProgressBar)
         mLoginButton.setOnClickListener {
-            mProgressBar.visibility = View.VISIBLE
-            auth.login(mEmail.text.toString(), mPassword.text.toString())
+            mLogInInt?.onLogIn(mEmail.text.toString(), mPassword.text.toString())
         }
     }
 

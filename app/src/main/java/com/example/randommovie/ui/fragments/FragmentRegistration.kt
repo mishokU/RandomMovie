@@ -1,6 +1,6 @@
 package com.example.randommovie.ui.fragments
 
-import android.app.ProgressDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,20 +11,22 @@ import androidx.fragment.app.Fragment
 import com.example.randommovie.R
 import com.example.randommovie.data.repository.firebase.Authentication
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.activity_log_in.view.*
-import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_registration.view.*
 
 class FragmentRegistration : Fragment() {
+
+    private var mRegistrationInt : OnRegistrationInterface ?= null
+
+    interface OnRegistrationInterface{
+        fun onRegistration(email : String, password : String,
+                           repeat_password : String, login : String)
+    }
 
     private lateinit var mEmail : EditText
     private lateinit var mPassword : EditText
     private lateinit var mRepeatPassword : EditText
     private lateinit var mUserName : EditText
     private lateinit var mRegistration : MaterialButton
-
-    private lateinit var auth : Authentication
-    private lateinit var mProgressBar : ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,20 +40,27 @@ class FragmentRegistration : Fragment() {
         mRepeatPassword = view.repeat_password_sign_up
         mUserName = view.username_sign_up
         mRegistration = view.registration_sign_up
-        mProgressBar = view.registration_progress_bar
-
-        auth = Authentication(view)
 
         registration()
         return view
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is OnRegistrationInterface){
+           mRegistrationInt = context
+        }
+    }
+
+
+
     private fun registration(){
         mRegistration.setOnClickListener {
-            mProgressBar.visibility = View.VISIBLE
-            auth.setProgressBar(mProgressBar)
-            auth.registration(mEmail.text.toString(),mPassword.text.toString(),
-                mRepeatPassword.text.toString(), mUserName.text.toString())
+            mRegistrationInt?.onRegistration(
+                mEmail.text.toString(),
+                mPassword.text.toString(),
+                mRepeatPassword.text.toString(),
+                mUserName.text.toString())
         }
     }
 }

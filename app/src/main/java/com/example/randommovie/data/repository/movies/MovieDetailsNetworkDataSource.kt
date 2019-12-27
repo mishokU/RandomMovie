@@ -31,7 +31,7 @@ class MovieDetailsNetworkDataSource (private val apiService : TheMovieDBInterfac
                         {
                             _downloadedMovieDetailsResponse.postValue(it)
                             _networkState.postValue(NetworkState.LOADED)
-                            Log.e("MovieDetailsDataSource", it.id.toString())
+                            Log.d("MovieDetailsDataSource", it.id.toString())
                         },
                         {
                             _networkState.postValue(NetworkState.ERROR)

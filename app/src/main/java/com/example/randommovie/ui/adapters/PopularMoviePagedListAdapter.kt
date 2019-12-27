@@ -18,12 +18,12 @@ import kotlinx.android.synthetic.main.movie_list_item.view.*
 import kotlinx.android.synthetic.main.network_state_item.view.*
 
 
-class PopularMoviePagedListAdapter(public val context: Context) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
+class PopularMoviePagedListAdapter(val context: Context) : PagedListAdapter<Movie, RecyclerView.ViewHolder>(
     MovieDiffCallback()
 ) {
 
     val MOVIE_VIEW_TYPE = 1
-    val NETWORK_VIEW_TYPE = 2
+    private val NETWORK_VIEW_TYPE = 2
 
     private var networkState: NetworkState? = null
 
@@ -32,14 +32,14 @@ class PopularMoviePagedListAdapter(public val context: Context) : PagedListAdapt
         val layoutInflater = LayoutInflater.from(parent.context)
         val view: View
 
-        if (viewType == MOVIE_VIEW_TYPE) {
+        return if (viewType == MOVIE_VIEW_TYPE) {
             view = layoutInflater.inflate(R.layout.movie_list_item, parent, false)
-            return MovieItemViewHolder(
+            MovieItemViewHolder(
                 view
             )
         } else {
             view = layoutInflater.inflate(R.layout.network_state_item, parent, false)
-            return NetworkStateItemViewHolder(
+            NetworkStateItemViewHolder(
                 view
             )
         }

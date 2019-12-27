@@ -30,11 +30,17 @@ class MovieDataSourceFactory (private val apiService : TheMovieDBInterface, priv
         return if(genresString.count() > 0){
             genreMovieDataSource = GenreMovieDataSource(apiService,compositeDisposable, genresString)
             genreMoviesLiveDataSource.postValue(genreMovieDataSource)
+            println("genres")
             genreMovieDataSource
         }else {
             movieDataSource = MovieDataSource(apiService,compositeDisposable)
             moviesLiveDataSource.postValue(movieDataSource)
+            println("popular")
             movieDataSource
         }
+    }
+
+    fun clearMovies() {
+        create()
     }
 }

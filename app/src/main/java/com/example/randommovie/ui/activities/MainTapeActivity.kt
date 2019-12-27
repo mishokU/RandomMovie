@@ -42,7 +42,7 @@ import kotlinx.android.synthetic.main.activity_main_tape.progress_bar_popular
 import kotlinx.android.synthetic.main.activity_main_tape.rv_movie_list
 import kotlinx.android.synthetic.main.activity_main_tape.txt_error_popular
 
-class MainTapeActivivty : AppCompatActivity() {
+class MainTapeActivity : AppCompatActivity() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<NestedScrollView>
     private lateinit var toolbar : Toolbar
@@ -220,8 +220,10 @@ class MainTapeActivivty : AppCompatActivity() {
         }
         if(genresString.count() == 0){
            getMovies()
+            println(genresString.count())
         }
         getGenreMovies()
+        println(genresString.count())
     }
 
     private fun getGenreMovies(){

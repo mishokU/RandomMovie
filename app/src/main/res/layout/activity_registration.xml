@@ -133,14 +133,6 @@
             android:background="@drawable/small_oval_login_screen"
             android:layout_alignParentBottom="true"/>
 
-        <ProgressBar
-            android:id="@+id/registration_progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_centerInParent="true"/>
-
-
     </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,10 +14,14 @@ class MovieGenresViewModel(
     genresString: ArraySet<Int>
 ) : ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
+    val compositeDisposable = CompositeDisposable()
 
     val moviePagedList : LiveData<PagedList<Movie>> by lazy {
         movieRepository.fetchGenresLiveMoviePagedList(compositeDisposable,genresString)
+    }
+
+    fun clearData(){
+        movieRepository.clearMovies()
     }
 
 

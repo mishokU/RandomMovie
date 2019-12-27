@@ -14,8 +14,10 @@ import com.example.randommovie.data.api.TheMovieDBClient
 import com.example.randommovie.data.api.TheMovieDBInterface
 import com.example.randommovie.data.localRepository.MovieDetailsRepository
 import com.example.randommovie.data.repository.NetworkState
+import com.example.randommovie.data.repository.firebase.MoviesRepository
 import com.example.randommovie.data.viewmodel.SingleMovieViewModel
 import com.example.randommovie.data.vo.MovieDetails
+import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.activity_single_movie.*
 import java.text.NumberFormat
 import java.util.*
@@ -25,12 +27,24 @@ class SingleMovie : AppCompatActivity() {
     private lateinit var viewModel: SingleMovieViewModel
     private lateinit var movieRepository: MovieDetailsRepository
 
+    private lateinit var BookmarkButton : MaterialButton
+    private lateinit var FavouriteButton : MaterialButton
+    private lateinit var ViewedButton : MaterialButton
+
+    private lateinit var movies : MoviesRepository
+
+    private var movieId : Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_movie)
 
-        val movieId: Int = intent.getIntExtra("id",1)
+        initButtons()
+        onClicks()
+
+        movies = MoviesRepository(this)
+
+        movieId = intent.getIntExtra("id",1)
 
         val apiService : TheMovieDBInterface = TheMovieDBClient.getClient()
         movieRepository =
@@ -50,7 +64,27 @@ class SingleMovie : AppCompatActivity() {
 
     }
 
-    fun bindUI( it: MovieDetails){
+    private fun initButtons(){
+        BookmarkButton = single_bookmark_button
+        FavouriteButton = single_favourite_button
+        ViewedButton = single_shown_button
+    }
+
+    private fun onClicks(){
+        BookmarkButton.setOnClickListener {
+            movies.addBookmark(movieId)
+        }
+
+        FavouriteButton.setOnClickListener {
+            movies.addFavourite(movieId)
+        }
+
+        ViewedButton.setOnClickListener {
+            movies.addViewed(movieId)
+        }
+    }
+
+    private fun bindUI(it: MovieDetails){
         movie_title.text = it.title
         movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
@@ -66,7 +100,6 @@ class SingleMovie : AppCompatActivity() {
         Glide.with(this)
             .load(moviePosterURL)
             .into(iv_movie_poster);
-
 
     }
 

@@ -1,19 +1,16 @@
 package com.example.randommovie.data.repository.firebase
 
 import android.app.Activity
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.randommovie.activities.MainTapeActivivty
+import com.example.randommovie.activities.MainTapeActivity
 import com.example.randommovie.data.vo.models.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.example.randommovie.ui.utils.launchActivity
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
 
@@ -24,9 +21,9 @@ class Authentication(private var activity: Activity) {
     private var auth : FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var userId : String
 
-    private lateinit var mProgressBar : ProgressBar
+    private var mProgressBar : ProgressBar? = null
 
-    fun setProgressBar(progressBar : ProgressBar){
+    fun setProgressBar(progressBar : ProgressBar?){
         mProgressBar = progressBar
     }
 
@@ -34,13 +31,14 @@ class Authentication(private var activity: Activity) {
         auth.signInWithEmailAndPassword(email,password)
             .addOnCompleteListener {
                 if(it.isSuccessful){
-                   mProgressBar.visibility = View.GONE
-                   activity.applicationContext?.launchActivity<MainTapeActivivty>()
+                   mProgressBar!!.visibility = View.GONE
+                   activity.launchActivity<MainTapeActivity>()
                    activity.finish()
                 }
                 else
                 {
-                   Toast.makeText(activity.applicationContext,"Login failed", Toast.LENGTH_SHORT).show()
+                    mProgressBar!!.visibility = View.GONE
+                    Toast.makeText(activity.applicationContext,"Login failed", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -51,7 +49,7 @@ class Authentication(private var activity: Activity) {
             auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener{
                     if(it.isSuccessful){
-                        mProgressBar.visibility = View.GONE
+                        mProgressBar!!.visibility = View.GONE
 
                         userId = auth.currentUser!!.uid
                         userRef = instance.reference.child("users").child(userId).child("data")
@@ -59,16 +57,16 @@ class Authentication(private var activity: Activity) {
                         userRef.child("login").setValue(login)
                         userRef.child("password").setValue(password)
 
-                        activity.applicationContext?.launchActivity<MainTapeActivivty>()
+                        activity.launchActivity<MainTapeActivity>()
                         activity.finish()
                     }
                     else{
-                        Log.e("log","bad auth")
-                        mProgressBar.visibility = View.GONE
+                        Toast.makeText(activity.applicationContext,"Registration failed", Toast.LENGTH_SHORT).show()
+                        mProgressBar!!.visibility = View.GONE
                     }
                 }
         } else {
-            mProgressBar.visibility = View.GONE
+            mProgressBar!!.visibility = View.GONE
             Toast.makeText(activity.applicationContext, "Enter all details", Toast.LENGTH_SHORT).show()
         }
     }
