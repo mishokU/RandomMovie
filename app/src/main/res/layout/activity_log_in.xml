@@ -8,6 +8,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -70,7 +71,7 @@
             android:layout_below="@id/input_login_form"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/registration_button"
+            android:id="@+id/login_go_to_registration"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"

@@ -19,9 +19,11 @@ class FragmentLogIn : Fragment() {
 
     interface OnLogInInterface{
         fun onLogIn(email : String, password : String)
+        fun goToRegistration()
     }
 
     private lateinit var mLoginButton : MaterialButton
+    private lateinit var mGoToRegistration : MaterialButton
     private lateinit var mEmail : EditText
     private lateinit var mPassword : EditText
 
@@ -35,6 +37,7 @@ class FragmentLogIn : Fragment() {
         mLoginButton = view.login_button_log_in
         mEmail = view.email_log_in
         mPassword = view.password_log_in
+        mGoToRegistration = view.login_go_to_registration
 
         login()
         return view
@@ -50,6 +53,9 @@ class FragmentLogIn : Fragment() {
     private fun login(){
         mLoginButton.setOnClickListener {
             mLogInInt?.onLogIn(mEmail.text.toString(), mPassword.text.toString())
+        }
+        mGoToRegistration.setOnClickListener {
+            mLogInInt?.goToRegistration()
         }
     }
 

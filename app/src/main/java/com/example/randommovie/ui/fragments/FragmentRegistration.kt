@@ -20,6 +20,7 @@ class FragmentRegistration : Fragment() {
     interface OnRegistrationInterface{
         fun onRegistration(email : String, password : String,
                            repeat_password : String, login : String)
+        fun goToLogIn()
     }
 
     private lateinit var mEmail : EditText
@@ -27,6 +28,7 @@ class FragmentRegistration : Fragment() {
     private lateinit var mRepeatPassword : EditText
     private lateinit var mUserName : EditText
     private lateinit var mRegistration : MaterialButton
+    private lateinit var mGoToLogIn : MaterialButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +42,7 @@ class FragmentRegistration : Fragment() {
         mRepeatPassword = view.repeat_password_sign_up
         mUserName = view.username_sign_up
         mRegistration = view.registration_sign_up
+        mGoToLogIn = view.registration_go_to_log_in
 
         registration()
         return view
@@ -61,6 +64,10 @@ class FragmentRegistration : Fragment() {
                 mPassword.text.toString(),
                 mRepeatPassword.text.toString(),
                 mUserName.text.toString())
+        }
+
+        mGoToLogIn.setOnClickListener {
+            mRegistrationInt?.goToLogIn()
         }
     }
 }

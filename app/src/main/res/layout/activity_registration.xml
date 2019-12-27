@@ -12,11 +12,14 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/registration_go_to_log_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:textColor="@color/colorBlack"
             android:textSize="32sp"/>
@@ -91,13 +94,11 @@
             android:layout_below="@id/input_login_form"/>
 
         <com.google.android.material.button.MaterialButton
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
             android:textColor="@color/colorBlack"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:textSize="32sp"/>

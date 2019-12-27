@@ -30,7 +30,7 @@ class ViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm,BEHAVIOR_
         return mFragmentsTitleList[position]
     }
 
-    public fun getFragment(position: Int) : Fragment{
+    fun getFragment(position: Int) : Fragment{
         return mFragments[position]
     }
 

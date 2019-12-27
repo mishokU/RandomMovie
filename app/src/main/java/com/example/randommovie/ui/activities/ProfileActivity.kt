@@ -76,9 +76,10 @@ class ProfileActivity : AppCompatActivity() {
 
     fun createExitAlertDialog(){
         val exitDialog = AlertDialog.Builder(this)
-        exitDialog.setTitle("Do you wanna exit?")
-            .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
-            .setPositiveButton("Yes") { _, _ ->
+        exitDialog.setTitle("Log out")
+            .setMessage("Login information will not be saved.")
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton("Log out") { _, _ ->
                 run {
                     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
                     firebaseAuth.signOut()

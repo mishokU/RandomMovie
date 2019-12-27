@@ -1,19 +1,21 @@
 package com.example.randommovie.data.repository.firebase
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.example.randommovie.activities.MainTapeActivity
 import com.example.randommovie.data.vo.models.UserModel
 import com.example.randommovie.ui.activities.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.example.randommovie.ui.utils.launchActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_start.*
 
 
 class Authentication(private var activity: Activity) {
@@ -30,19 +32,27 @@ class Authentication(private var activity: Activity) {
     }
 
     fun login(email : String, password : String){
-        auth.signInWithEmailAndPassword(email,password)
-            .addOnCompleteListener {
-                if(it.isSuccessful){
-                   mProgressBar!!.visibility = View.GONE
-                   activity.launchActivity<MainTapeActivity>()
-                   activity.finish()
+        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(
+                            activity.baseContext,
+                            "Enter into account",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        mProgressBar!!.visibility = View.GONE
+                        activity.launchActivity<MainTapeActivity>()
+                        activity.finish()
+                    } else {
+                        mProgressBar!!.visibility = View.GONE
+                        alertDialog()
+                    }
                 }
-                else
-                {
-                    mProgressBar!!.visibility = View.GONE
-                    alertDialog()
-                }
-            }
+        } else{
+            mProgressBar!!.visibility = View.GONE
+            alertDialog()
+        }
     }
 
     fun registration(email : String, password : String, repeat_password : String, login : String){
@@ -58,6 +68,9 @@ class Authentication(private var activity: Activity) {
                         userRef.child("email").setValue(email)
                         userRef.child("login").setValue(login)
                         userRef.child("password").setValue(password)
+
+
+                        Toast.makeText(activity.baseContext,"Registration account",Toast.LENGTH_LONG).show()
 
                         activity.launchActivity<MainTapeActivity>()
                         activity.finish()
@@ -103,42 +116,24 @@ class Authentication(private var activity: Activity) {
     }
 
     fun alertDialog(){
-        val exitDialog = AlertDialog.Builder(activity.baseContext)
+        val exitDialog = AlertDialog.Builder(activity)
         exitDialog.setTitle("Error")
             .setMessage("Login or password are invalid")
-            .setPositiveButton("Ok") { _, _ ->
-                run {
-                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-                    firebaseAuth.signOut()
-                    activity.launchActivity<MainActivity>()
-                }
-            }.show()
+            .show()
     }
 
     fun alertDialogRegistration(){
-        val exitDialog = AlertDialog.Builder(activity.baseContext)
+        val exitDialog = AlertDialog.Builder(activity)
         exitDialog.setTitle("Error")
             .setMessage("Email or password is invalid\n password 8 symbols with one capital")
-            .setPositiveButton("Ok") { _, _ ->
-                run {
-                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-                    firebaseAuth.signOut()
-                    activity.launchActivity<MainActivity>()
-                }
-            }.show()
+            .show()
     }
 
     fun alertDialogRegistrationAll(){
-        val exitDialog = AlertDialog.Builder(activity.baseContext)
+        val exitDialog = AlertDialog.Builder(activity)
         exitDialog.setTitle("Error")
             .setMessage("Fill in all the fields")
-            .setPositiveButton("Ok") { _, _ ->
-                run {
-                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-                    firebaseAuth.signOut()
-                    activity.launchActivity<MainActivity>()
-                }
-            }.show()
+            .show()
     }
 
     fun inSystem() : Boolean {
