@@ -17,7 +17,7 @@ def test_registration_valid(driver):
     driver.back()
     button = driver.find_element_by_id(cnst.REGISTER_BUTTON_NAME)
     button.click()
-    assert 1 == 1
+    assert cnst.MAIN_BAR == cnst.MAIN_MENU_TOP_BAR.text
 
 def test_registration_invalid(driver):
     username = driver.find_element_by_id(cnst.REGISTER_USERNAME_TEXT_FIELD)
@@ -34,7 +34,7 @@ def test_registration_invalid(driver):
     driver.back()
     button = driver.find_element_by_id(cnst.REGISTER_BUTTON_NAME)
     button.click()
-    assert 1 == 1
+    assert cnst.MAIN_BAR == cnst.MAIN_MENU_TOP_BAR.text
 
 def test_login_valid(driver):
     email = driver.find_element_by_id(cnst.LOGIN_EMAIL_TEXT_FIELD)
@@ -46,7 +46,7 @@ def test_login_valid(driver):
     button = driver.find_element_by_id(cnst.LOGIN_BUTTON_NAME)
     button.click()
 
-    assert 1 == 1
+    assert cnst.MAIN_BAR == cnst.MAIN_MENU_TOP_BAR.text
 
 def test_login_invalid(driver):
     email = driver.find_element_by_id(cnst.LOGIN_EMAIL_TEXT_FIELD)
@@ -57,7 +57,7 @@ def test_login_invalid(driver):
     driver.back()
     button = driver.find_element_by_id(cnst.LOGIN_BUTTON_NAME)
     button.click()
-    assert 1 == 1
+    assert cnst.MAIN_BAR == cnst.MAIN_MENU_TOP_BAR.text
 
 # def test_profile_change_saved(driver):
 #
