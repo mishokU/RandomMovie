@@ -42,11 +42,11 @@ class ProfileObjectsAdapter(val items : ArrayList<BookmarkModel>, val context: C
                 .load(movie?.image_url)
                 .into(itemView.item_movie_picture)
 
-            itemView.setOnClickListener{
+            /*itemView.setOnClickListener{
                 val intent = Intent(context, SingleMovie::class.java)
                 intent.putExtra("id", movie?.id)
                 context.startActivity(intent)
-            }
+            }*/
         }
 
     }

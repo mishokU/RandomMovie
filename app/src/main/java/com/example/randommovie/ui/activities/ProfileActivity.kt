@@ -31,7 +31,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun initToolbar(){
         setSupportActionBar(mToolbar)
-        mToolbar.title = "Profile"
+        supportActionBar?.title = "My Profile"
         supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -74,7 +74,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun createExitAlertDialog(){
+    private fun createExitAlertDialog(){
         val exitDialog = AlertDialog.Builder(this)
         exitDialog.setTitle("Log out")
             .setMessage("Login information will not be saved.")

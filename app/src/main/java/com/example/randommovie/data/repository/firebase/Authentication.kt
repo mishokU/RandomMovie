@@ -2,6 +2,7 @@ package com.example.randommovie.data.repository.firebase
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -98,6 +99,7 @@ class Authentication(private var activity: Activity) {
 
     fun getProfileData(email : EditText, password : EditText, login : EditText) {
         userId = auth.currentUser!!.uid
+        mProgressBar?.visibility = View.VISIBLE
         userRef = instance.reference.child("users").child(userId).child("data")
         userRef.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
@@ -110,6 +112,7 @@ class Authentication(private var activity: Activity) {
                     email.setText(user.email)
                     password.setText(user.password)
                     login.setText(user.login)
+                    mProgressBar?.visibility = View.GONE
                 }
             }
         })
@@ -119,6 +122,9 @@ class Authentication(private var activity: Activity) {
         val exitDialog = AlertDialog.Builder(activity)
         exitDialog.setTitle("Error")
             .setMessage("Login or password are invalid")
+            .setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 
@@ -126,6 +132,9 @@ class Authentication(private var activity: Activity) {
         val exitDialog = AlertDialog.Builder(activity)
         exitDialog.setTitle("Error")
             .setMessage("Email or password is invalid\n password 8 symbols with one capital")
+            .setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 
@@ -133,6 +142,9 @@ class Authentication(private var activity: Activity) {
         val exitDialog = AlertDialog.Builder(activity)
         exitDialog.setTitle("Error")
             .setMessage("Fill in all the fields")
+            .setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 

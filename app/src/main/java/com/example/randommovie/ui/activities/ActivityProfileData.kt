@@ -41,6 +41,7 @@ class ActivityProfileData : AppCompatActivity() {
 
     private fun initFirebase(){
         auth = Authentication(this)
+        auth.setProgressBar(profile_data_progress_bar)
     }
 
     private fun initToolbar(){
