@@ -11,7 +11,7 @@ Movietopia is a simple Android app to find your next favorite movie.
 
 #### Requirements
 ```
-> Android Studio 29.02
+> Android Studio 29.0.2
 > Gradle 3.5.3
 > Kotlin 1.3.50
 ```
