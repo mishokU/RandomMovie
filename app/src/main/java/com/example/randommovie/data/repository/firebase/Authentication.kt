@@ -7,8 +7,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.randommovie.activities.MainTapeActivity
 import com.example.randommovie.data.vo.models.UserModel
+import com.example.randommovie.ui.activities.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.example.randommovie.ui.utils.launchActivity
 import com.google.firebase.database.*
@@ -38,7 +40,7 @@ class Authentication(private var activity: Activity) {
                 else
                 {
                     mProgressBar!!.visibility = View.GONE
-                    Toast.makeText(activity.applicationContext,"Login failed", Toast.LENGTH_SHORT).show()
+                    alertDialog()
                 }
             }
     }
@@ -61,13 +63,13 @@ class Authentication(private var activity: Activity) {
                         activity.finish()
                     }
                     else{
-                        Toast.makeText(activity.applicationContext,"Registration failed", Toast.LENGTH_SHORT).show()
+                        alertDialogRegistration()
                         mProgressBar!!.visibility = View.GONE
                     }
                 }
         } else {
             mProgressBar!!.visibility = View.GONE
-            Toast.makeText(activity.applicationContext, "Enter all details", Toast.LENGTH_SHORT).show()
+            alertDialogRegistrationAll()
         }
     }
 
@@ -98,6 +100,45 @@ class Authentication(private var activity: Activity) {
                 }
             }
         })
+    }
+
+    fun alertDialog(){
+        val exitDialog = AlertDialog.Builder(activity.baseContext)
+        exitDialog.setTitle("Error")
+            .setMessage("Login or password are invalid")
+            .setPositiveButton("Ok") { _, _ ->
+                run {
+                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+                    firebaseAuth.signOut()
+                    activity.launchActivity<MainActivity>()
+                }
+            }.show()
+    }
+
+    fun alertDialogRegistration(){
+        val exitDialog = AlertDialog.Builder(activity.baseContext)
+        exitDialog.setTitle("Error")
+            .setMessage("Email or password is invalid\n password 8 symbols with one capital")
+            .setPositiveButton("Ok") { _, _ ->
+                run {
+                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+                    firebaseAuth.signOut()
+                    activity.launchActivity<MainActivity>()
+                }
+            }.show()
+    }
+
+    fun alertDialogRegistrationAll(){
+        val exitDialog = AlertDialog.Builder(activity.baseContext)
+        exitDialog.setTitle("Error")
+            .setMessage("Fill in all the fields")
+            .setPositiveButton("Ok") { _, _ ->
+                run {
+                    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+                    firebaseAuth.signOut()
+                    activity.launchActivity<MainActivity>()
+                }
+            }.show()
     }
 
     fun inSystem() : Boolean {

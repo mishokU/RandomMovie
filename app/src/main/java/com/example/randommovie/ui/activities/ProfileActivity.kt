@@ -5,10 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.randommovie.R
-import com.example.randommovie.ui.activities.ActivityProfileData
-import com.example.randommovie.ui.activities.ActivityProfileFavourites
-import com.example.randommovie.ui.activities.ActivityProfileShownFilms
-import com.example.randommovie.ui.activities.ActivityProfilesBookmarks
+import com.example.randommovie.ui.activities.*
 import com.example.randommovie.ui.utils.launchActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth

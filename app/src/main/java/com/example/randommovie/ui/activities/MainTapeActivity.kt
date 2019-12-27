@@ -14,7 +14,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.randommovie.R
 import com.example.randommovie.data.api.TheMovieDBClient
@@ -34,9 +33,9 @@ import com.example.randommovie.data.viewmodel.MainActivityViewModel
 import com.example.randommovie.data.viewmodel.MovieGenresViewModel
 import com.example.randommovie.data.vo.GenreResponse
 import com.example.randommovie.data.vo.models.GenreModel
+import com.example.randommovie.ui.activities.MainActivity
 import com.example.randommovie.ui.adapters.PopularMoviePagedListAdapter
 import com.example.randommovie.ui.utils.launchActivity
-import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_tape.progress_bar_popular
 import kotlinx.android.synthetic.main.activity_main_tape.rv_movie_list

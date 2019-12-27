@@ -1,4 +1,4 @@
-package com.example.randommovie.activities
+package com.example.randommovie.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(),FragmentLogIn.OnLogInInterface,Fragment
         tabLayout?.setupWithViewPager(viewPager)
     }
 
-    override fun onLogIn(email: String, password: String) {
+    override fun onLogIn(email: String, password: String){
         mProgressBar?.visibility = View.VISIBLE
         auth?.login(email, password)
     }

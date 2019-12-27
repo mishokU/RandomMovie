@@ -17,6 +17,7 @@ import com.example.randommovie.data.repository.NetworkState
 import com.example.randommovie.data.repository.firebase.MoviesRepository
 import com.example.randommovie.data.viewmodel.SingleMovieViewModel
 import com.example.randommovie.data.vo.MovieDetails
+import com.example.randommovie.data.vo.models.BookmarkModel
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.activity_single_movie.*
 import java.text.NumberFormat
@@ -32,6 +33,7 @@ class SingleMovie : AppCompatActivity() {
     private lateinit var ViewedButton : MaterialButton
 
     private lateinit var movies : MoviesRepository
+    private lateinit var movieModel : BookmarkModel
 
     private var movieId : Int = 1
 
@@ -72,19 +74,27 @@ class SingleMovie : AppCompatActivity() {
 
     private fun onClicks(){
         BookmarkButton.setOnClickListener {
-            movies.addBookmark(movieId)
+            movies.addBookmark(movieModel)
         }
 
         FavouriteButton.setOnClickListener {
-            movies.addFavourite(movieId)
+            movies.addFavourite(movieModel)
         }
 
         ViewedButton.setOnClickListener {
-            movies.addViewed(movieId)
+            movies.addViewed(movieModel)
         }
     }
 
     private fun bindUI(it: MovieDetails){
+        movieModel = BookmarkModel(
+            it.id.toString(),
+            it.title,
+            it.overview,
+            it.rating.toString(),
+            POSTER_BASE_URL + it.posterPath,
+            it.releaseDate)
+
         movie_title.text = it.title
         movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
@@ -99,8 +109,7 @@ class SingleMovie : AppCompatActivity() {
         val moviePosterURL = POSTER_BASE_URL + it.posterPath
         Glide.with(this)
             .load(moviePosterURL)
-            .into(iv_movie_poster);
-
+            .into(iv_movie_poster)
     }
 
 
