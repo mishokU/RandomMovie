@@ -12,7 +12,7 @@ Movietopia is a simple Android app to find your next favorite movie.
 ## Motivation
 During this project we seek three main targets, which are:
 
-+ Learn Android applications programming using Kotlin
++ Learn Android applications development with Kotlin
 + Learn how to interact with remote database such as themoviedb.org using REST API
 + Build simple but rather usefull application to discover, remember and collect movies
 
