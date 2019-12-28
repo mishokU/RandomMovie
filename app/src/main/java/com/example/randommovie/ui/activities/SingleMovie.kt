@@ -126,6 +126,7 @@ class SingleMovie : AppCompatActivity() {
         genres.deleteCharAt(genres.count() - 1)
         genres_view.text = genres
 
+
         ratingBar.rating = it.rating.toFloat()
 
         val formatCurrency = NumberFormat.getCurrencyInstance(Locale.US)
