@@ -37,11 +37,9 @@ class Authentication(private var activity: Activity) {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Toast.makeText(
-                            activity.baseContext,
-                            "Enter into account",
-                            Toast.LENGTH_LONG
-                        ).show()
+
+
+
                         mProgressBar!!.visibility = View.GONE
                         activity.launchActivity<MainTapeActivity>()
                         activity.finish()
@@ -147,6 +145,8 @@ class Authentication(private var activity: Activity) {
             }
             .show()
     }
+
+    
 
     fun inSystem() : Boolean {
         val currentUser = auth.currentUser

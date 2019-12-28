@@ -7,10 +7,21 @@
     android:layout_height="220dp">
 
     <ImageView
+        android:id="@+id/delete_object"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:src="@android:drawable/ic_menu_delete"/>
+
+    <ImageView
         android:id="@+id/item_movie_picture"
         android:layout_width="140dp"
         android:layout_height="200dp"
-        android:layout_margin="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
         android:src="@drawable/pride"
         android:scaleType="centerInside" />
 
@@ -19,7 +30,7 @@
         android:layout_height="175dp"
         android:layout_toEndOf="@id/item_movie_picture"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <TextView
@@ -58,6 +69,7 @@
                 android:layout_marginStart="10dp"
                 android:textAlignment="center"
                 app:chipCornerRadius="10dp"
+                android:autoSizeTextType="uniform"
                 android:layout_centerInParent="true"
                 android:text="28 January 1813 г."
                 android:layout_height="wrap_content"/>

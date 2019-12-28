@@ -29,11 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeColor="@color/violetColor"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/profile_data_login"
                 android:layout_width="match_parent"
+                android:lines="1"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -41,11 +44,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
             app:boxStrokeColor="@color/violetColor"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/profile_data_email"
+                android:lines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -54,11 +60,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
             app:boxStrokeColor="@color/violetColor"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/profile_data_password"
+                android:lines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

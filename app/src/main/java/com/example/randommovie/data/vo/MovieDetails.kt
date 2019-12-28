@@ -1,6 +1,7 @@
 package com.example.randommovie.data.vo
 
 
+import com.example.randommovie.data.vo.models.GenreModel
 import com.google.gson.annotations.SerializedName
 
 data class MovieDetails(
@@ -19,5 +20,6 @@ data class MovieDetails(
     val title: String,
     val video: Boolean,
     @SerializedName("vote_average")
-    val rating: Double
+    val rating: Double,
+    @SerializedName("genres") val genreList : ArrayList<GenreModel>
 )

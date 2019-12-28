@@ -46,6 +46,7 @@
                 android:textColor="@color/colorBlack" />
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:inputType="textPassword"
                 android:id="@+id/password_log_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
